@@ -1,0 +1,265 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif;}
+
+body{
+  background:#05070c;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  width:280px;
+  height:517px;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  background:#05070c;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+
+/* DARK BASE */
+.dark-base{
+  position:absolute;
+  inset:0;
+  background:
+   radial-gradient(circle at top, rgba(0,120,180,.18), rgba(0,0,0,.85)),
+   url("bg.png") center/cover no-repeat;
+  z-index:1;
+}
+
+/* ===== MASK TEXT ===== */
+
+.mask-marquee{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  overflow:hidden;
+}
+
+.mask-marquee::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.25));
+  pointer-events:none;
+}
+
+.mask-track{
+  position:absolute;
+  display:flex;
+  gap:140px;
+  white-space:nowrap;
+  font-weight:900;
+  font-size:82px;
+  letter-spacing:-2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.08);
+
+  filter: blur(0.3px);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 60px rgba(0,120,255,0.08);
+
+  opacity:1;
+}
+
+
+.row1{ top:50px; }
+.row2{ top:120px; }
+.row3{ top:190px; }
+.row4{ top:260px; }
+
+.left{ left:0; }
+.right{ right:0; }
+
+/* CINEMATIC SHADE */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.9));
+  z-index:3;
+}
+
+/* SHIMMER */
+.shimmer{
+  position:absolute;
+  inset:-50%;
+  background:linear-gradient(120deg, transparent 45%, rgba(255,255,255,.12) 50%, transparent 55%);
+  transform:translateX(-120%);
+  z-index:4;
+  pointer-events:none;
+}
+
+/* CONTENT */
+.content{
+  position:relative;
+  z-index:5;
+  height:100%;
+  padding:30px 20px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  color:white;
+}
+
+.logo-slot img{
+  height:18px;
+  opacity:.95;
+  margin-top:6px;
+}
+
+.hero{
+  margin-top:-80px;
+}
+
+h1{
+  font-size:46px;
+  font-weight:900;
+  line-height:1.05;
+  text-transform:uppercase;
+}
+
+h1 span{ color:#1aa3ff; }
+
+p{
+  font-size:14px;
+  letter-spacing:.22em;
+  opacity:.75;
+  margin-top:8px;
+}
+
+/* CTA */
+.bubbly-button{
+  font-size:13px;
+  padding:14px 26px;
+  background:linear-gradient(135deg,#00c6ff,#0072ff);
+  color:#fff;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,140,255,.35);
+  letter-spacing:.08em;
+  font-weight:600;
+  margin:0 auto 6px;
+  position:relative;
+  overflow:hidden;
+}
+
+.bubbly-button span{position:relative;z-index:2;}
+
+.bubbly-button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, rgba(255,255,255,.9) 0%, transparent 60%);
+  transform:scale(0);
+  opacity:0;
+}
+
+.bubbly-button.animate::after{
+  animation:bubble .6s ease-out forwards;
+}
+
+@keyframes bubble{
+  0%{transform:scale(0);opacity:.8;}
+  100%{transform:scale(2);opacity:0;}
+}
+
+.bubbly-button{
+  display:inline-block;
+  font-size:13px;
+  padding:14px 26px;
+  appearance:none;
+  background:#0048ff;
+  color:#fff;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  position:relative;
+  transition:transform .1s ease-in, box-shadow .25s ease-in;
+  box-shadow:0 8px 26px rgba(0,198,255,.45);
+  letter-spacing:.08em;
+  font-weight:600;
+  overflow:visible;
+}
+
+.bubbly-button:focus{ outline:0; }
+
+.bubbly-button:before,
+.bubbly-button:after{
+  position:absolute;
+  content:'';
+  display:block;
+  width:140%;
+  height:100%;
+  left:-20%;
+  z-index:-1;
+  transition:all ease-in-out .5s;
+  background-repeat:no-repeat;
+}
+
+.bubbly-button:before{
+  display:none;
+  top:-75%;
+  background-image:
+    radial-gradient(circle,#0048ff 20%,transparent 20%),
+    radial-gradient(circle,transparent 20%,#0072ff 20%,transparent 30%),
+    radial-gradient(circle,#0048ff 20%,transparent 20%),
+    radial-gradient(circle,#0072ff 20%,transparent 20%),
+    radial-gradient(circle,transparent 10%,#00c6ff 15%,transparent 20%),
+    radial-gradient(circle,#0048ff 20%,transparent 20%),
+    radial-gradient(circle,#0072ff 20%,transparent 20%),
+    radial-gradient(circle,#0048ff 20%,transparent 20%);
+  background-size:10% 10%,20% 20%,15% 15%,20% 20%,18% 18%,10% 10%,15% 15%,10% 10%;
+}
+
+.bubbly-button:after{
+  display:none;
+  bottom:-75%;
+  background-image:
+    radial-gradient(circle,#0072ff 20%,transparent 20%),
+    radial-gradient(circle,#00c6ff 20%,transparent 20%),
+    radial-gradient(circle,transparent 10%,#0072ff 15%,transparent 20%),
+    radial-gradient(circle,#00c6ff 20%,transparent 20%),
+    radial-gradient(circle,#0072ff 20%,transparent 20%),
+    radial-gradient(circle,#00c6ff 20%,transparent 20%);
+  background-size:15% 15%,20% 20%,18% 18%,20% 20%,15% 15%,10% 10%;
+}
+
+.bubbly-button:active{
+  transform:scale(0.94);
+  box-shadow:0 4px 18px rgba(0,198,255,.25);
+}
+
+/* trigger */
+
+.bubbly-button.animate:before{
+  display:block;
+  animation:topBubbles .75s ease-in-out forwards;
+}
+
+.bubbly-button.animate:after{
+  display:block;
+  animation:bottomBubbles .75s ease-in-out forwards;
+}
+
+/* animations */
+
+@keyframes topBubbles{
+  0%{background-position:5% 90%,10% 90%,10% 90%,15% 90%,25% 90%,40% 90%,55% 90%,70% 90%;}
+  50%{background-position:0% 80%,0% 20%,10% 40%,20% 0%,30% 30%,22% 50%,50% 50%,65% 20%;}
+  100%{
+    background-position:0% 70%,0% 10%,10% 30%,20% -10%,30% 20%,22% 40%,50% 40%,65% 10%;
+    background-size:0% 0%;
+  }
+}
+
+@keyframes bottomBubbles{
+  0%{background-position:10% -10%,30% 10%,55% -10%,70% -10%,85% -10%,70% -10%;}
+  50%{background-position:0% 80%,20% 80%,45% 60%,60% 100%,75% 70%,95% 60%;}
+  100%{
+    background-position:0% 90%,20% 90%,45% 70%,60% 110%,75% 80%,95% 70%;
+    background-size:0% 0%;
+  }
+}
